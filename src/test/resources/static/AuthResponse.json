@@ -1,0 +1,20 @@
+{
+  "refresh_token_expires_in": "0",
+  "api_product_list": "[mrch-rpln-replenishment-v1-PROD-product]",
+  "api_product_list_json": [
+    "mrch-rpln-replenishment-v1-PROD-product"
+  ],
+  "organization_name": "prd-corp-apigee",
+  "developer.email": "generic-dev@falabella.cl",
+  "token_type": "BearerToken",
+  "issued_at": "1671716344489",
+  "attr_email": "",
+  "client_id": "01Whv0llyzbOttGR0GUXe4IezN3MGgGi",
+  "access_token": "vpeXXLQ7QCtSkim8YSZdN251BMZU",
+  "application_name": "5761bb6f-9be5-4b46-916c-72af62844475",
+  "scope": "",
+  "attr_user": "",
+  "expires_in": "3599",
+  "refresh_count": "0",
+  "status": "approved"
+}
