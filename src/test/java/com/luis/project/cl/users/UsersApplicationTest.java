@@ -7,13 +7,13 @@ import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
-class TemplateApplicationTest extends BaseTest {
+class UsersApplicationTest extends BaseTest {
     @InjectMocks
     UsersApplication mock;
 
     @Test
     void contextLoads() {
-        UsersApplication templateApplication = new UsersApplication();
-        Assertions.assertNotNull(templateApplication);
+        UsersApplication usersApplication = new UsersApplication();
+        Assertions.assertNotNull(usersApplication);
     }
 }

@@ -15,13 +15,13 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table(name = "user")
+@Table(name = "users")
 public class UserDto {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-    @Column(nullable = false)
-    private String name;
+    @Column(nullable = false, name = "FULL_NAME")
+    private String fullName;
     @Column(unique = true, nullable = false)
     private String email;
     @Column(nullable = false)
@@ -29,11 +29,11 @@ public class UserDto {
     @Column(nullable = false)
     private LocalDateTime created;
     private LocalDateTime modified;
-    @Column(nullable = false, name = "LASTLOGIN")
+    @Column(nullable = false, name = "last_login")
     private LocalDateTime lastLogin;
     @Column(nullable = false)
     private UUID token;
-    @Column(nullable = false, name = "ISACTIVE")
+    @Column(nullable = false, name = "is_active")
     private boolean isActive;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<PhoneDto> phones;

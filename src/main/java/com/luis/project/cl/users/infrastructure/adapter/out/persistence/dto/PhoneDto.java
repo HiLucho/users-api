@@ -10,18 +10,19 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table(name = "phone")
+@Table(name = "phones")
 public class PhoneDto {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     @Column(nullable = false)
     private String number;
-    @Column(nullable = false, name= "CITYCODE")
+    @Column(nullable = false, name = "city_code")
     private String cityCode;
-    @Column(nullable = false, name= "COUNTRYCODE")
+    @Column(nullable = false, name = "country_code")
     private String countryCode;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "userid", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
+    @ToString.Exclude
     private UserDto user;
 }

@@ -1,20 +1,19 @@
-CREATE TABLE usuario (
+CREATE TABLE users (
   id UUID PRIMARY KEY,
-  nombre VARCHAR(255) NOT NULL,
-  correo VARCHAR(255) UNIQUE NOT NULL,
-  contrasena VARCHAR(255) NOT NULL,
+  full_name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) UNIQUE NOT NULL,
+  password VARCHAR(255) NOT NULL,
   created TIMESTAMP NOT NULL,
   modified TIMESTAMP,
-  lastLogin TIMESTAMP NOT NULL,
+  last_login TIMESTAMP NOT NULL,
   token UUID NOT NULL,
-  isActive BOOLEAN NOT NULL
+  is_active BOOLEAN NOT NULL
 );
 
-CREATE TABLE telefono (
+CREATE TABLE phones (
   id UUID PRIMARY KEY,
   number VARCHAR(255) NOT NULL,
-  cityCode VARCHAR(255) NOT NULL,
-  countryCode VARCHAR(255) NOT NULL,
-  usuarioid UUID,
-  FOREIGN KEY (usuarioid) REFERENCES usuario(id)
+  city_code VARCHAR(255) NOT NULL,
+  country_code VARCHAR(255) NOT NULL,
+  user_id UUID, FOREIGN KEY (user_id) REFERENCES users(id)
 );

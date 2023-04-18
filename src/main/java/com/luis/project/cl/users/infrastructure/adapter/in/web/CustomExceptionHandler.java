@@ -1,12 +1,12 @@
 package com.luis.project.cl.users.infrastructure.adapter.in.web;
 
 
-import com.luis.project.cl.users.domain.exception.MissingHeaderException;
 import com.luis.project.cl.users.domain.exception.UserAlreadyExistsException;
 import com.luis.project.cl.users.domain.exception.UserNotFoundException;
 import jakarta.validation.ConstraintViolationException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -14,13 +14,15 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import java.util.stream.Collectors;
+
 @SuppressWarnings("unused")
 @Slf4j
 @ControllerAdvice
 @RequiredArgsConstructor
 public class CustomExceptionHandler {
 
-    @ExceptionHandler(value = {ConstraintViolationException.class, MissingHeaderException.class})
+    @ExceptionHandler(value = {ConstraintViolationException.class})
     public ProblemDetail handleConstraintViolationException(Exception ex) {
         log.error(ex.getMessage());
         return ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, ex.getMessage());
@@ -29,13 +31,14 @@ public class CustomExceptionHandler {
     @ExceptionHandler(value = {MethodArgumentNotValidException.class})
     public ProblemDetail handleArgumentException(MethodArgumentNotValidException ex) {
         log.error(String.valueOf(ex.getBindingResult()));
-        return ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, String.valueOf(ex.getBindingResult().getAllErrors().get(0).getDefaultMessage()));
+        var errors = ex.getBindingResult().getAllErrors().stream().map(DefaultMessageSourceResolvable::getDefaultMessage).collect(Collectors.joining(", "));
+        return ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, errors);
     }
 
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(value = {UserNotFoundException.class})
-    public void handleUserNotFoundException(UserNotFoundException e) {
-        log.error(e.getMessage());
+    public ProblemDetail handleUserNotFoundException(UserNotFoundException e) {
+        return ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, e.getMessage());
     }
 
 
