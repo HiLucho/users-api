@@ -1,4 +1,4 @@
-# USERS API - This is a service to persist and retrieve users.
+# USERS API - This is a RESTful API service to persist and retrieve users.
 
 ____________________
 
@@ -109,9 +109,10 @@ curl --location --request PATCH 'localhost:8080/v1/user/update/f3bfb949-e58e-46b
 
 ### -  BD schema
 ![img.png](img.png)
-
 ### - Solution diagram
 - There is a hexagonal architecture as pattern design, clean architecture, SOLID & KISS.
 - I used only 1 IN port and 1 OUT port, because this will escalate with other business ports and services,
 providing faster implementations without affecting other implemented adapters.
 ![img_1.png](img_1.png)
+### - Compliance with Richardson Maturity Model
+![img_2.png](img_2.png)
