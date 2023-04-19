@@ -114,5 +114,5 @@ curl --location --request PATCH 'localhost:8080/v1/user/update/f3bfb949-e58e-46b
 - I used only 1 IN port and 1 OUT port, because this will escalate with other business ports and services,
 providing faster implementations without affecting other implemented adapters.
 ![img_1.png](img_1.png)
-### - Compliance with Richardson Maturity Model
+### - Compliance with 2nd level Richardson Maturity Model
 ![img_2.png](img_2.png)
