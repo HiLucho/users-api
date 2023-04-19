@@ -35,6 +35,6 @@ public class UserDto {
     private UUID token;
     @Column(nullable = false, name = "is_active")
     private boolean isActive;
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     private List<PhoneDto> phones;
 }

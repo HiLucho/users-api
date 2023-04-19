@@ -10,6 +10,7 @@ import com.luis.project.cl.users.infrastructure.adapter.out.persistence.mapper.U
 import com.luis.project.cl.users.infrastructure.adapter.out.persistence.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.Collections;
@@ -61,6 +62,7 @@ public class UserRepositoryAdapter implements UserRepositoryPort {
     }
 
     @Override
+    @Transactional
     public Optional<UserCreated> update(UserRequest userRequest, User userToUpdate) {
         final LocalDateTime now = LocalDateTime.now();
         var userToUpdateDto = UserMapper.INSTANCE.modelToDto(userToUpdate);
