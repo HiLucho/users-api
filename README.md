@@ -102,7 +102,7 @@ curl --location --request PUT 'localhost:8080/v1/user/update/5afe3621-0471-4b32-
 
 #### DEACTIVATE an User
 ```
-curl --location --request PATCH 'localhost:8080/v1/user/update/f3bfb949-e58e-46bd-94e5-8a0ddc6a1c5f'
+curl --location --request PUT 'localhost:8080/v1/user/update/f3bfb949-e58e-46bd-94e5-8a0ddc6a1c5f'
 ```
 ------------
 ## DIAGRAMS
