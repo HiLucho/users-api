@@ -16,14 +16,11 @@
     <description>users API</description>
     <properties>
         <java.version>17</java.version>
-        <spring-cloud.version>2022.0.2</spring-cloud.version>
-        <spring-cloud-gcp.version>3.4.1</spring-cloud-gcp.version>
         <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
         <org.projectlombok.version>1.18.24</org.projectlombok.version>
         <lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
         <mapstruct.version>1.5.3.Final</mapstruct.version>
         <springdoc-open-api.version>2.1.0</springdoc-open-api.version>
-        <httclient5.version>5.2.1</httclient5.version>
     </properties>
     <dependencies>
         <dependency>

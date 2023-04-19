@@ -1,22 +1,24 @@
-# USERS API
+# USERS API - This is a service to persist and retrieve users.
+
 ____________________
 
-## Disclaimer:
-I decided to do it with Hibernate and JPA because I am more familiar with using H2.
+## Solution based on:
 
-I used hexagonal architecture as pattern design.
+##### Jacoco report for coverage
 
-I used Spring Boot 3, it's include a better way to handle a feedback error using RFC 7807, there is I not used a simple {"message": "some error"}  
+##### Mockito
 
-Jacoco report for coverage.
+##### Junit 5
 
-Mockito
+##### Swagger
 
-Junit 5
+##### Lombok
 
-Java version: java 17.0.5-oracle
+##### Java 17.0.5-oracle
+
+##### Spring Boot 3.0.5 - I used Spring Boot 3, it's include a better way to handle a feedback error using RFC 7807, there is I not used a `{"message": "some error"}`
+
 ____________________
-This is a service to persist and retrieve users.
 
 ##  Getting Started
 ____________________
@@ -26,7 +28,7 @@ ____________________
 To run this APP properly run correctly, the following properties must be configured.
 
 For dev and local environment, simply you can use the default values on the specific property file.
-The files are in on __src/main/resources__ and the name is application-{environment}.yamls
+The files are in on __src/main/resources__ and the name is application.yaml
 
 The BD schema is created when the application starts.
 
@@ -34,25 +36,30 @@ The BD schema is created when the application starts.
 resources/bd/schema.sql
 ```
 
-### Run test with coverage
+# How to test and run
+
+### - Run test with coverage
 
 * ```mvn clean verify```
 * Then open `index.html` at `target/site/jacoco/` to see the coverage report.
 
-### Run clean
+### - Run clean
 
 * ```mvn clean```
 
-### Run app locally
+### - Run app locally
 
 * ```mvn exec:java```
+---------------
+### - URL SWAGGER UI
+[SWAGGER UI URL](http://localhost:8080/swagger-ui/index.html#/)
 
-### Utils Url (local example)
+### Open API
+[OPEN API FILE](openApi.json)
 
-#### URL SWAGGER UI
-http://localhost:8080/swagger-ui/index.html#/
+## - Utils Url (examples)
 
-#### To CREATE an user
+#### CREATE an user
 ```
 curl --location 'localhost:8080/v1/user/create' \
 --header 'Content-Type: application/json' \
@@ -67,12 +74,12 @@ curl --location 'localhost:8080/v1/user/create' \
     }]
 }   '
 ```
-#### To GET an user by id
+#### GET an User by id
 ```
 curl --location 'localhost:8080/v1/user/5afe3621-0471-4b32-80d8-13de9e838e5e'
 ```
 
-#### To UPDATE an User
+#### UPDATE an User
 ```
 curl --location --request PUT 'localhost:8080/v1/user/update/5afe3621-0471-4b32-80d8-13de9e838e5e' \
 --header 'Content-Type: application/json' \
@@ -93,14 +100,18 @@ curl --location --request PUT 'localhost:8080/v1/user/update/5afe3621-0471-4b32-
 }   '
 ```
 
-#### To Deactivate an User
+#### DEACTIVATE an User
 ```
 curl --location --request PATCH 'localhost:8080/v1/user/update/f3bfb949-e58e-46bd-94e5-8a0ddc6a1c5f'
 ```
+------------
+## DIAGRAMS
 
-
-This is the BD schema
+### -  BD schema
 ![img.png](img.png)
 
-This solution diagram
+### - Solution diagram
+- There is a hexagonal architecture as pattern design, clean architecture, SOLID & KISS.
+- I used only 1 IN port and 1 OUT port, because this will escalate with other business ports and services,
+providing faster implementations without affecting other implemented adapters.
 ![img_1.png](img_1.png)
